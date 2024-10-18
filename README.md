@@ -10,6 +10,8 @@ Este repositorio ha sido creado y gestionado utilizando **Git** y **GitHub** par
 
 **QuizWiz** está bajo la **GNU GENERAL PUBLIC LICENSE**, lo que otorga libertad para usar, modificar y distribuir el software bajo ciertas condiciones. Todos los detalles sobre la licencia se encuentran en el archivo [`LICENSE`](./LICENSE).
 
-## 🧠 Primer Hito del Proyecto
+## 🧠 Hitos del Proyecto
 
-La lógica detrás del juego, junto con las reglas y las diferentes modalidades de preguntas (como opción múltiple o verdadero/falso), se describen en el archivo [`hito1.md`](.hitos/hito1.md). Aquí se explica cómo los jugadores compiten respondiendo preguntas para ganar puntos y avanzar en el juego.
+Enlaces para los hitos del proyecto:
+
+ 1. [`hito1.md`](./hitos/hito1.md) 
