@@ -1,6 +1,6 @@
 # QuizWiz: Un Juego de Preguntas y Respuestas 🎮
 
-Bienvenido a **QuizWiz**, un emocionante juego de preguntas y respuestas, inspirado en el popular "Preguntados". Este proyecto es parte de la asignatura de *Cloud Computing* en la Universidad de Granada.
+Bienvenido a **QuizWiz**, un emocionante juego de preguntas y respuestas, inspirado en el popular "Preguntados". Este proyecto es parte de la asignatura de *Cloud Computing* en el Master Universitario de Ingeniería Informática en la Universidad de Granada.
 
 ## 🚀 Inicio del Proyecto
 
