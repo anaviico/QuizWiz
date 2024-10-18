@@ -4,11 +4,11 @@ Bienvenido a **QuizWiz**, un emocionante juego de preguntas y respuestas, inspir
 
 ## 🚀 Inicio del Proyecto
 
-Este repositorio ha sido creado y gestionado utilizando **Git** y **GitHub** para asegurar una colaboración eficiente y un control de versiones adecuado. Puedes consultar más detalles sobre la configuración inicial en el archivo [`git_setup.md`](./git_setup.md).
+Este repositorio ha sido creado y gestionado utilizando **Git** y **GitHub** para asegurar una colaboración eficiente y un control de versiones adecuado. Puedes consultar más detalles sobre la configuración inicial en el archivo [`GitGithub_setup.md`](./GitGithub_setup.md).
 
 ## 🛡️ Licencia
 
-**QuizWiz** está bajo la **licencia MIT**, lo que otorga libertad para usar, modificar y distribuir el software bajo ciertas condiciones. Todos los detalles sobre la licencia se encuentran en el archivo [`LICENSE`](./LICENSE).
+**QuizWiz** está bajo la **GNU GENERAL PUBLIC LICENSE**, lo que otorga libertad para usar, modificar y distribuir el software bajo ciertas condiciones. Todos los detalles sobre la licencia se encuentran en el archivo [`LICENSE`](./LICENSE).
 
 ## 🧠 Primer Hito del Proyecto
 
