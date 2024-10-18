@@ -14,6 +14,4 @@ Este repositorio ha sido creado y gestionado utilizando **Git** y **GitHub** par
 
 La lógica detrás del juego, junto con las reglas y las diferentes modalidades de preguntas (como opción múltiple o verdadero/falso), se describen en el archivo [`hito1.md`](.hitos/hito1.md). Aquí se explica cómo los jugadores compiten respondiendo preguntas para ganar puntos y avanzar en el juego.
 
----
-
 ¡Únete a la comunidad de desarrolladores y contribuye a hacer de **QuizWiz** un juego aún más desafiante y divertido!
