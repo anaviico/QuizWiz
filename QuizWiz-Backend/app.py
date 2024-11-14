@@ -1,9 +1,11 @@
+from readline import backend
 from flask import Flask
 from models import db
 from routes import bp
 from sqlalchemy.sql import text
 from config import Config, TestingConfig
 import os
+
 
 app = Flask(__name__)
 

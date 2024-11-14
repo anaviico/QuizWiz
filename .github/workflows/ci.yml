@@ -37,6 +37,8 @@ jobs:
           pip install -r requirements.txt
       - name: Set FLASK_ENV to testing
         run: echo "FLASK_ENV=testing" >> $GITHUB_ENV
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=${GITHUB_WORKSPACE}/QuizWiz-Backend" >> $GITHUB_ENV
       - name: Wait for PostgreSQL to be ready
         run: |
           for i in {1..10}; do
