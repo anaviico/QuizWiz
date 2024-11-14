@@ -2,10 +2,17 @@ from flask import Flask
 from models import db
 from routes import bp
 from sqlalchemy.sql import text
+from config import Config, TestingConfig
+import os
 
 app = Flask(__name__)
 
-# Configuración de la base de datos
+if os.getenv('FLASK_ENV') == 'testing':
+    app.config.from_object(TestingConfig)
+else:
+    app.config.from_object(Config)
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:root@localhost:5433/quizwiz'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -13,10 +20,8 @@ app.secret_key = 'clavesecreta'
 
 db.init_app(app)
 
-# Registrar el blueprint
 app.register_blueprint(bp)
 
-# Ruta básica para verificar la conexión
 @app.route('/')
 def index():
     try:
