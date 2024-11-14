@@ -1,5 +1,7 @@
-import pytest
+import sys
+sys.path.append('QuizWiz-Backend')  # Agrega la ruta de tu módulo al path
 from app import app
+import pytest
 
 @pytest.fixture
 def client():

@@ -74,9 +74,3 @@ def show_results():
     total_questions = len(session['answered_questions'])
     correct_answers = session.get('correct_answers', 0)
     return render_template('result.html', total_questions=total_questions, correct_answers=correct_answers)
-
-def test_question_page(client):
-    """Test para verificar que la página de preguntas carga correctamente"""
-    response = client.get('/question')
-    assert response.status_code == 200
-    assert b'Pregunta' in response.data  
