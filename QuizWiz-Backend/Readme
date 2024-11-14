@@ -1,0 +1,4 @@
+pg_ctl -D "C:\Program Files\PostgreSQL\17\data" start
+cd C:\Users\analu\Desktop\INFORMATICA\Master\PRIMERCUATRI\CC2\QuizWiz-Backend
+.\venv\Scripts\activate
+python app.py
