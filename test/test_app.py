@@ -1,4 +1,3 @@
-import pytest
 from app import app, db
 
 def test_home_page(client):
