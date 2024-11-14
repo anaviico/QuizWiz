@@ -32,20 +32,20 @@ Un sistema de progresión permitirá a los jugadores desbloquear logros y avanza
 
 **QuizWiz** está dirigido a estudiantes, aficionados al aprendizaje general y cualquier persona interesada en aprender de manera interactiva y divertida. La plataforma está diseñada para atraer a jugadores que buscan mejorar sus conocimientos mientras se divierten compitiendo.
 
-## ⚙️ Características Técnicas
+# ⚙️ Características Técnicas
 
-- **Base de Datos**: Se añadirán y eliminarán preguntas de forma continua para mantener el contenido actualizado.
+- **Base de Datos**: Se añadirán y eliminarán preguntas de forma continua para mantener el contenido actualizado. Se utilizará **PostgreSQL**, gestionado a través de **pgAdmin**, para asegurar un manejo robusto de los datos.
 - **Infraestructura en la Nube**: QuizWiz estará alojado en la nube, permitiendo escalabilidad y accesibilidad desde cualquier dispositivo.
-- **Interfaz Amigable**: El diseño de la plataforma será intuitivo, facilitando tanto la navegación como la interacción entre jugadores y creadores de contenido.
+- **Interfaz Amigable**: La aplicación contará con un diseño intuitivo, desarrollado con **HTML** y **CSS**, facilitando la navegación y la interacción entre jugadores y creadores de contenido.
 - **Actualizaciones Constantes**: Se realizarán mejoras continuas basadas en las necesidades y el feedback de la comunidad.
 - **Tecnologías Usadas**:
-  - **Android Studio** para el desarrollo de la aplicación.
-  - **Kotlin** como lenguaje principal de programación.
+  - **Python** con **Flask** para el desarrollo del backend.
+  - **HTML** y **CSS** para la creación de la interfaz de usuario.
 
 ## 📅 Implementación
 
-La implementación de **QuizWiz** se realizará utilizando **Android Studio** como entorno de desarrollo y **Kotlin** como lenguaje de programación. El desarrollo se centrará en crear una aplicación nativa para Android, asegurando una experiencia fluida y adaptada a dispositivos móviles. Se integrarán funcionalidades como el sistema de recomendación, logros y personalización del contenido, optimizando el rendimiento y la escalabilidad de la aplicación.
+La implementación de **QuizWiz** se llevará a cabo usando **Python** con el framework **Flask** como base para el desarrollo del backend. La base de datos **PostgreSQL** será gestionada mediante **pgAdmin**, garantizando un control eficiente de los datos. La interfaz de usuario se diseñará utilizando **HTML** y **CSS** para proporcionar una experiencia accesible y atractiva. Se integrarán funcionalidades como el inicio de juego, sistema de recomendación y personalización del contenido, optimizando tanto el rendimiento como la escalabilidad de la aplicación.
 
 ## 🔮 Futuro del Proyecto
 
-En el futuro, se planea expandir **QuizWiz** a otras plataformas, como iOS, y añadir soporte multilingüe para llegar a una audiencia internacional. También se explorarán posibles colaboraciones con instituciones educativas para incluir contenido más formal y estructurado, permitiendo una experiencia educativa más profunda.
+En el futuro, se planea expandir **QuizWiz** para añadir soporte multilingüe, permitiendo llegar a una audiencia internacional. También se explorarán posibles colaboraciones con instituciones educativas para incluir contenido más formal y estructurado, ofreciendo una experiencia educativa más enriquecedora.
