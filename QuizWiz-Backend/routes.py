@@ -6,17 +6,17 @@ bp = Blueprint('quiz', __name__)
 
 @bp.route('/', methods=['GET'])
 def home():
-    # Obtener las categorías únicas de la base de datos
+    # Obtener las categorías únicas de la bd
     categories = db.session.query(Question.category).distinct().all()
-    categories = [category[0] for category in categories]  # Convertir a una lista simple
+    categories = [category[0] for category in categories]  
     return render_template('index.html', categories=categories)
 
 @bp.route('/category', methods=['GET'])
 def choose_category():
     selected_category = request.args.get('category')
     session['selected_category'] = selected_category
-    session['answered_questions'] = []  # Reiniciar preguntas respondidas para la nueva categoría
-    session['correct_answers'] = 0  # Reiniciar contador de respuestas correctas
+    session['answered_questions'] = [] 
+    session['correct_answers'] = 0  
     return redirect(url_for('quiz.get_question'))
 
 @bp.route('/question', methods=['GET'])
@@ -57,18 +57,16 @@ def submit_answer():
         flash('Pregunta no encontrada')
         return redirect(url_for('quiz.get_question'))
 
-    # Agrega la pregunta al historial de preguntas respondidas
     if question_id not in session['answered_questions']:
         session['answered_questions'].append(question_id)
-        session.modified = True  # Asegura que Flask guarde la sesión actualizada
+        session.modified = True 
 
     if question.correct_answer == user_answer:
         flash('¡Respuesta correcta!')
-        session['correct_answers'] += 1  # Incrementar contador de respuestas correctas
+        session['correct_answers'] += 1  
     else:
         flash('Respuesta incorrecta. Inténtalo de nuevo.')
 
-    # Redirige a una nueva pregunta después de responder
     return redirect(url_for('quiz.get_question'))
 
 @bp.route('/results', methods=['GET'])
@@ -76,3 +74,9 @@ def show_results():
     total_questions = len(session['answered_questions'])
     correct_answers = session.get('correct_answers', 0)
     return render_template('result.html', total_questions=total_questions, correct_answers=correct_answers)
+
+def test_question_page(client):
+    """Test para verificar que la página de preguntas carga correctamente"""
+    response = client.get('/question')
+    assert response.status_code == 200
+    assert b'Pregunta' in response.data  
