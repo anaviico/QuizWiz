@@ -1,7 +1,9 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'QuizWiz-Backend')))
+
 import pytest
 from app import app as flask_app
-import sys
-sys.path.insert(0, './QuizWiz-Backend')
 
 @pytest.fixture
 def client():
