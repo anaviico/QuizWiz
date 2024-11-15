@@ -6,7 +6,6 @@ bp = Blueprint('quiz', __name__)
 
 @bp.route('/', methods=['GET'])
 def home():
-    # Obtener las categorías únicas de la bd
     categories = db.session.query(Question.category).distinct().all()
     categories = [category[0] for category in categories]  
     return render_template('index.html', categories=categories)
@@ -21,7 +20,6 @@ def choose_category():
 
 @bp.route('/question', methods=['GET'])
 def get_question():
-    # Verificar si hay una categoría seleccionada
     if 'selected_category' not in session:
         flash('Por favor, selecciona una categoría para comenzar.')
         return redirect(url_for('quiz.home'))
@@ -30,7 +28,6 @@ def get_question():
     if 'answered_questions' not in session:
         session['answered_questions'] = []
 
-    # Filtrar preguntas por la categoría seleccionada y que no hayan sido respondidas
     unanswered_questions = Question.query.filter(
         Question.category == category,
         ~Question.id.in_(session['answered_questions'])
@@ -62,12 +59,12 @@ def submit_answer():
 
     if question_id not in session['answered_questions']:
         session['answered_questions'].append(question_id)
-        session.modified = True  # Marca la sesión como modificada
+        session.modified = True  
 
     if question.correct_answer == user_answer:
         flash('¡Respuesta correcta!')
-        session['correct_answers'] += 1  # Incrementa el contador de respuestas correctas
-        session.modified = True  # Marca la sesión como modificada
+        session['correct_answers'] += 1 
+        session.modified = True  
     else:
         flash('Respuesta incorrecta. Inténtalo de nuevo.')
 
