@@ -49,9 +49,14 @@ jobs:
             echo "Waiting for PostgreSQL..."
             sleep 3
           done
-      - name: Initialize Database
+      - name: Initialice database
         run: |
-          python -c "from app import db, app; with app.app_context(): db.create_all()"
+          python -c "
+          from app import db, app
+          with app.app_context():
+            db.create_all()
+          "
+        
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:root@localhost:5433/quizwiz
