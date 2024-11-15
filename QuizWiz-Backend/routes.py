@@ -52,18 +52,22 @@ def submit_answer():
     question_id = int(request.form.get('question_id'))
     user_answer = request.form.get('answer')
 
-    question = Question.query.get(question_id)
+    question = db.session.get(Question, question_id)
     if question is None:
         flash('Pregunta no encontrada')
         return redirect(url_for('quiz.get_question'))
 
+    print("Respuesta correcta esperada:", question.correct_answer)
+    print("Respuesta del usuario:", user_answer)
+
     if question_id not in session['answered_questions']:
         session['answered_questions'].append(question_id)
-        session.modified = True 
+        session.modified = True  # Marca la sesión como modificada
 
     if question.correct_answer == user_answer:
         flash('¡Respuesta correcta!')
-        session['correct_answers'] += 1  
+        session['correct_answers'] += 1  # Incrementa el contador de respuestas correctas
+        session.modified = True  # Marca la sesión como modificada
     else:
         flash('Respuesta incorrecta. Inténtalo de nuevo.')
 
