@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import ARRAY
+from extensions import db
 
-db = SQLAlchemy()
 
 class Question(db.Model):
     __tablename__ = 'questions'

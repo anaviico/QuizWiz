@@ -1,21 +1,27 @@
 from flask import Flask
-from models import db
-from routes import bp
-from sqlalchemy.sql import text
+from extensions import db
 from config import Config, TestingConfig
+from routes import bp
 import os
+import logging
 
+# logger
+logging.basicConfig(
+    filename='quizwiz.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger()
+
+logger.info("Iniciando aplicación QuizWiz!!")
 
 app = Flask(__name__)
 
+# entorno
 if os.getenv('FLASK_ENV') == 'testing':
     app.config.from_object(TestingConfig)
 else:
     app.config.from_object(Config)
-
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:root@localhost:5433/quizwiz'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.secret_key = 'clavesecreta'
 
@@ -23,17 +29,7 @@ db.init_app(app)
 
 app.register_blueprint(bp)
 
-@app.route('/')
-def index():
-    try:
-        db.session.execute(text('SELECT 1'))
-        return 'Conectado a la base de datos exitosamente'
-    except Exception as e:
-        return f'Error al conectar a la base de datos: {e}'
-
 if __name__ == '__main__':
     with app.app_context():
         db.create_all() 
-    app.run(debug=True) 
-
-__all__ = ['app', 'db']
+    app.run(debug=True)
