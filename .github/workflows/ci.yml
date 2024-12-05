@@ -57,14 +57,10 @@ jobs:
       - name: Set DATABASE_URL for PostgreSQL
         run: echo "DATABASE_URL=postgresql://postgres:root@localhost:5433/quizwiz" >> $GITHUB_ENV
 
-      - name: Initialize database 
+      - name: Test if app can be imported
         run: |
-          python -c "
-          from app import db, app
-          with app.app_context():
-              db.create_all()  
-          "
-        
+          python -c "from app import create_app; print('App imported successfully!')"
+
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:root@localhost:5433/quizwiz
