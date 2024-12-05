@@ -43,6 +43,13 @@ jobs:
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=${GITHUB_WORKSPACE}/QuizWiz_Backend" >> $GITHUB_ENV
 
+      - name: Initialize database
+        run: |
+          python -c "
+          from QuizWiz_Backend.app import db, create_app
+          with create_app().app_context():
+            db.create_all()  # Si ya tienes la base de datos configurada, solo debería crear las tablas
+          "
       - name: Set DATABASE_URL for PostgreSQL
         run: echo "DATABASE_URL=postgresql://postgres:root@localhost:5433/quizwiz" >> $GITHUB_ENV
       - name: Run tests
