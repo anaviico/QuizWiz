@@ -31,14 +31,18 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9.13'
+      
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Set FLASK_ENV to testing
         run: echo "FLASK_ENV=testing" >> $GITHUB_ENV
+
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=${GITHUB_WORKSPACE}/QuizWiz-Backend" >> $GITHUB_ENV
+
       - name: Wait for PostgreSQL to be ready
         run: |
           for i in {1..10}; do
@@ -49,13 +53,6 @@ jobs:
             echo "Waiting for PostgreSQL..."
             sleep 3
           done
-      - name: Initialice database
-        run: |
-          python -c "
-          from app import db, app
-          with app.app_context():
-            db.create_all()
-          "
         
       - name: Run tests
         env:
