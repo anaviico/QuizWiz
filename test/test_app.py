@@ -1,5 +1,5 @@
-from app import app
-from extensions import db
+from QuizWiz_Backend.app import app
+from QuizWiz_Backend.extensions import db
 
 
 def test_home_page(client):

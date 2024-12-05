@@ -1,6 +1,8 @@
 {
     "python.analysis.extraPaths": [
         "./test/test_",
-        "./QuizWiz-Backend"
+        "./QuizWiz-Backend",
+        "./test/test_",
+        "./QuizWiz_Backend"
     ]
 }

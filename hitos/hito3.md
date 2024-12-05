@@ -15,7 +15,7 @@ En este hito, se ha avanzado en el desarrollo de **QuizWiz** al convertir el bac
 
 ### 🌐 1.1 Rutas Principales
 
-El diseño de la API se basó en un esquema RESTful, con las siguientes rutas:
+La API está diseñada siguiendo el patrón RESTful. Las rutas fueron definidas para manejar las principales interacciones de los usuarios:
 
 - **GET `/`**: Página de inicio que muestra las categorías disponibles.
 - **GET `/category`**: Selección de una categoría y configuración de la sesión.
@@ -80,7 +80,8 @@ QuizWiz-Backend/
 test/
 |- test_app.py
 |- test_questions.py
-|- test_submit_answer.py
+|- test_category.py
+|- test_results.py
 ```
 
 - **app.py**: Configura la app, inicializa la base de datos y registra las rutas.
@@ -149,22 +150,21 @@ def test_home_page(client):
 ```
 
 ```
-(venv) PS C:\Users\analu\Desktop\INFORMATICA\Master\PRIMERCUATRI\CC2\QuizWiz> pytest 
-=============================== test session starts ================================
-platform win32 -- Python 3.9.13, pytest-8.3.4, pluggy-1.5.0
+(venv) C:\Users\analu\Desktop\INFORMATICA\Master\PRIMERCUATRI\CC2\QuizWiz>pytest -v
+========================================== test session starts ===========================================
+platform win32 -- Python 3.9.0, pytest-8.3.3, pluggy-1.5.0 -- c:\users\analu\desktop\informatica\master\primercuatri\cc2\quizwiz\quizwiz_backend\venv\scripts\python.exe
+cachedir: .pytest_cache
 rootdir: C:\Users\analu\Desktop\INFORMATICA\Master\PRIMERCUATRI\CC2\QuizWiz
 configfile: pytest.ini
 testpaths: test
-plugins: flask-1.3.0
-collected 5 items
+collected 4 items
 
-test\test_app.py .                                                            [ 20%]
-test\test_category.py .                                                       [ 40%] 
-test\test_questions.py .                                                      [ 60%]
-test\test_results.py .                                                        [ 80%] 
-test\test_submit_answerd.py .                                                 [100%]
+test/test_app.py::test_home_page PASSED                                                             [ 25%]
+test/test_category.py::test_choose_category PASSED                                                  [ 50%]
+test/test_questions.py::test_questions_existence PASSED                                             [ 75%]
+test/test_results.py::test_results PASSED                                                           [100%]
 
-================================ 5 passed in 0.16s ================================= 
+=========================================== 4 passed in 0.14s ============================================
 ```
 
 ### 🤖 Ejecución de Pruebas en GitHub Actions
