@@ -53,6 +53,17 @@ jobs:
             echo "Waiting for PostgreSQL..."
             sleep 3
           done
+
+      - name: Set DATABASE_URL for PostgreSQL
+        run: echo "DATABASE_URL=postgresql://postgres:root@localhost:5433/quizwiz" >> $GITHUB_ENV
+
+      - name: Initialize database 
+        run: |
+          python -c "
+          from app import db, app
+          with app.app_context():
+              db.create_all()  
+          "
         
       - name: Run tests
         env:
