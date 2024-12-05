@@ -43,31 +43,8 @@ jobs:
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=${GITHUB_WORKSPACE}/QuizWiz_Backend" >> $GITHUB_ENV
 
-      - name: Wait for PostgreSQL to be ready
-        run: |
-          for i in {1..10}; do
-            if pg_isready -h localhost -p 5433 -U postgres; then
-              echo "PostgreSQL is ready"
-              break
-            fi
-            echo "Waiting for PostgreSQL..."
-            sleep 3
-          done
-
       - name: Set DATABASE_URL for PostgreSQL
         run: echo "DATABASE_URL=postgresql://postgres:root@localhost:5433/quizwiz" >> $GITHUB_ENV
-
-      - name: Test if app can be imported
-        run: |
-          python -c "from QuizWiz_Backend.app import create_app; print('App imported successfully!')"
-
-      - name: List environment variables and directory structure
-        run: |
-          echo "Environment Variables:"
-          printenv
-          echo "Directory Structure:"
-          ls -R
-
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:root@localhost:5433/quizwiz
