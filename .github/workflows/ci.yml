@@ -40,6 +40,9 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
 
+      - name: Initialize database
+        run: python QuizWiz_Backend/init_bd.py
+
       - name: Set FLASK_ENV to testing
         run: echo "FLASK_ENV=testing" >> $GITHUB_ENV
 
