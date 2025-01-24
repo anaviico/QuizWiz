@@ -9,6 +9,7 @@ services:
       - "8000:5000"
     environment:
       - FLASK_ENV=development
+      - DATABASE_URL=postgresql://postgres:root@db:5432/quizwiz
     depends_on:
       - db
   db:
