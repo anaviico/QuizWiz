@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash, session
-from .services import get_categories, get_unanswered_questions, check_answer, calculate_results
+from services import get_categories, get_unanswered_questions, check_answer, calculate_results
 import random
-from .logging_config import logger
+from logging_config import logger
 
 bp = Blueprint('quiz', __name__)
 

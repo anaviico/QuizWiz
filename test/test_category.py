@@ -1,5 +1,5 @@
-from QuizWiz_Backend.models import Question
-from QuizWiz_Backend.extensions import db
+from models import Question
+from extensions import db
 
 def test_choose_category(client):
     with client.session_transaction() as session:

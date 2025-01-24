@@ -1,5 +1,5 @@
-from .models import Question
-from .extensions import db
+from models import Question
+from extensions import db
 
 def get_categories():
     """Obtiene todas las categorías disponibles de la base de datos."""

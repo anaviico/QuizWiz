@@ -1,6 +1,6 @@
-from .extensions import db
-from .app import app
-from .models import Question
+from extensions import db
+from app import app
+from models import Question
 
 questions = [
     # Ciencia

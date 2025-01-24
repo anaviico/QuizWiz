@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:15
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: root
@@ -21,16 +21,19 @@ jobs:
         ports:
           - 5433:5432
         options: >-
-          --health-cmd "pg_isready -U postgres"
+          --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9.13'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -43,16 +46,22 @@ jobs:
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=${GITHUB_WORKSPACE}/QuizWiz_Backend" >> $GITHUB_ENV
 
-      - name: Initialize database
-        run: |
-          python -c "
-          from QuizWiz_Backend.app import db, create_app
-          with create_app().app_context():
-            db.create_all()  # Si ya tienes la base de datos configurada, solo debería crear las tablas
-          "
       - name: Set DATABASE_URL for PostgreSQL
         run: echo "DATABASE_URL=postgresql://postgres:root@localhost:5433/quizwiz" >> $GITHUB_ENV
+
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          for i in {1..10}; do
+            pg_isready -h localhost -p 5433 && break || sleep 3;
+          done
+
+      - name: Initialize database
+        run: |
+          python QuizWiz_Backend/init_bd.py
+        env:
+          DATABASE_URL: postgresql://postgres:root@localhost:5433/quizwiz
+
       - name: Run tests
         env:
-          DATABASE_URL: postgres://postgres:root@localhost:5433/quizwiz
+          DATABASE_URL: postgresql://postgres:root@localhost:5433/quizwiz
         run: pytest

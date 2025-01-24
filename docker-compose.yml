@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: ./QuizWiz_Backend
+      dockerfile: Dockerfile
+    container_name: quizwiz-app
+    ports:
+      - "8000:5000"
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - db
+  db:
+    image: postgres:15
+    container_name: quizwiz-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: quizwiz
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

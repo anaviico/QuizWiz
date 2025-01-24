@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import ARRAY
-from .extensions import db
+from extensions import db
 
 
 class Question(db.Model):
