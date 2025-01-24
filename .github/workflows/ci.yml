@@ -55,12 +55,6 @@ jobs:
             pg_isready -h localhost -p 5433 && break || sleep 3;
           done
 
-      - name: Initialize database
-        run: |
-          python QuizWiz_Backend/init_bd.py
-        env:
-          DATABASE_URL: postgresql://postgres:root@localhost:5433/quizwiz
-
       - name: Run tests
         env:
           DATABASE_URL: postgresql://postgres:root@localhost:5433/quizwiz
