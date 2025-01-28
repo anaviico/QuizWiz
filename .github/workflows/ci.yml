@@ -46,6 +46,9 @@ jobs:
       - name: Set FLASK_ENV to testing
         run: echo "FLASK_ENV=testing" >> $GITHUB_ENV
 
+      - name: Set DATABASE_URL for PostgreSQL
+        run: echo "DATABASE_TEST_URL=postgresql://postgres:root@localhost:5433/quizwiz" >> $GITHUB_ENV
+
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=${GITHUB_WORKSPACE}/QuizWiz_Backend" >> $GITHUB_ENV
 
