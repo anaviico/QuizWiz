@@ -34,6 +34,6 @@ def test_database_connection():
 
 if __name__ == "__main__":
     print("Esperando a que el clúster esté activo...")
-    time.sleep(10)  # Espera para que los contenedores estén listos
+    time.sleep(10)  
     test_api_endpoint()
     test_database_connection()
